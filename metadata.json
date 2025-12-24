@@ -1,0 +1,5 @@
+{
+  "name": "MGR Nutritious Meal Programme Stock Register",
+  "description": "A web application to automatically maintain the Food Commodity Stock Register for the Tamil Nadu Puratchi Thalaivar MGR Nutritious Meal Programme for a single school.",
+  "requestFramePermissions": []
+}

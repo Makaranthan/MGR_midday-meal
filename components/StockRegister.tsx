@@ -45,7 +45,7 @@ const StockRegister: React.FC<StockRegisterProps> = ({ monthlyData }) => {
             <table className="min-w-full bg-white border border-gray-300">
               <thead className="bg-gray-100">
                 <tr>
-                  <th className="py-2 px-3 border-b text-center">தேதி</th>
+                  <th className="py-2 px-3 border-b text-center sticky left-0 bg-gray-100 z-10">தேதி</th>
                   <th className="py-2 px-3 border-b text-center">நாள்</th>
                   <th className="py-2 px-3 border-b text-center">வகுப்பு 1-5 மாணவர்கள்</th>
                   <th className="py-2 px-3 border-b text-center">வகுப்பு 6-8 மாணவர்கள்</th>
@@ -61,9 +61,10 @@ const StockRegister: React.FC<StockRegisterProps> = ({ monthlyData }) => {
                     const totalReceived = (day.stockReceived && day.stockReceived.primary) 
                         ? day.stockReceived.primary[commodity] + day.stockReceived.upperPrimary[commodity]
                         : 0; // Fallback for old data structure
+                  const rowBgClass = day.isHoliday ? 'bg-gray-50' : (index % 2 === 0 ? 'bg-white' : 'bg-slate-50');
                   return (
-                  <tr key={index} className={day.isHoliday ? 'bg-gray-50' : (index % 2 === 0 ? 'bg-white' : 'bg-slate-50')}>
-                    <td className="py-1 px-3 border-b text-center">{parseDate(day.date).toLocaleDateString('ta-IN', {day:'2-digit'})}</td>
+                  <tr key={index} className={rowBgClass}>
+                    <td className={`py-1 px-3 border-b text-center sticky left-0 z-0 ${rowBgClass}`}>{parseDate(day.date).toLocaleDateString('ta-IN', {day:'2-digit'})}</td>
                     <td className="py-1 px-3 border-b text-center">{DAYS_TAMIL[day.dayOfWeek]}</td>
                     <td className="py-1 px-3 border-b text-center font-mono">{day.isHoliday ? '-' : day.primaryStudents}</td>
                     <td className="py-1 px-3 border-b text-center font-mono">{day.isHoliday ? '-' : day.upperPrimaryStudents}</td>

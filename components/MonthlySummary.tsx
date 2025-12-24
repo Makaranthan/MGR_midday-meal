@@ -48,7 +48,7 @@ const MonthlySummary: React.FC<MonthlySummaryProps> = ({ monthlyData }) => {
         <table className="min-w-full bg-white border">
           <thead className="bg-gray-200">
             <tr>
-              <th className="py-3 px-4 border text-left">பொருள்</th>
+              <th className="py-3 px-4 border text-left sticky left-0 bg-gray-200 z-10">பொருள்</th>
               <th className="py-3 px-4 border text-right">தொடக்க இருப்பு</th>
               <th className="py-3 px-4 border text-right">மாத மொத்த வரவு</th>
               <th className="py-3 px-4 border text-right">மாத மொத்த செலவு</th>
@@ -57,8 +57,8 @@ const MonthlySummary: React.FC<MonthlySummaryProps> = ({ monthlyData }) => {
           </thead>
           <tbody>
             {COMMODITIES.map(commodity => (
-              <tr key={commodity} className="hover:bg-slate-50">
-                <td className="py-2 px-4 border font-semibold text-gray-700">{COMMODITY_NAMES[commodity].name} ({COMMODITY_NAMES[commodity].unit})</td>
+              <tr key={commodity} className="group hover:bg-slate-50">
+                <td className="py-2 px-4 border font-semibold text-gray-700 sticky left-0 bg-white group-hover:bg-slate-50">{COMMODITY_NAMES[commodity].name} ({COMMODITY_NAMES[commodity].unit})</td>
                 <td className="py-2 px-4 border text-right font-mono">{commodity === 'egg' ? openingBalance.egg.toFixed(0) : openingBalance[commodity].toFixed(3)}</td>
                 <td className="py-2 px-4 border text-right font-mono text-green-700">{commodity === 'egg' ? totals.receivedTotal.egg.toFixed(0) : totals.receivedTotal[commodity].toFixed(3)}</td>
                 <td className="py-2 px-4 border text-right font-mono text-red-700">{commodity === 'egg' ? totals.consumptionTotal.egg.toFixed(0) : totals.consumptionTotal[commodity].toFixed(3)}</td>

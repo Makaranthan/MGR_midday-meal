@@ -76,7 +76,7 @@ const DailyEntry: React.FC<DailyEntryProps> = ({ monthlyData, updateDailyRecord 
     <div className="flex flex-col md:flex-row gap-6">
       <div className="md:w-1/3 space-y-2">
         <h3 className="text-lg font-bold mb-2">தேதி தேர்வு</h3>
-        <div className="max-h-96 overflow-y-auto pr-2">
+        <div className="max-h-60 md:max-h-96 overflow-y-auto pr-2">
             {monthlyData.map(day => (
             <button
                 key={day.date}
